@@ -1,0 +1,38 @@
+{
+    "name": "zazalt/strink",
+    "description": "Strink",
+    "homepage": "https://github.com/Zazalt/Strink",
+    "keywords": [
+        "string"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zazalt",
+            "email": "example@example.com",
+            "homepage": "https://github.com/Zazalt/Strink"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zazalt\\Strink\\": "src/"
+        }
+    },
+    "extra": {
+        "zazalt": {
+            "language": "php",
+            "title": "Strink",
+            "description": [
+                "Strink is a PHP library/package for string manipulation"
+            ],
+            "github": "Zazalt",
+            "repository": "Strink",
+            "version": "beta",
+            "generateUsage": false,
+            "examples": true
+        }
+    }
+}
