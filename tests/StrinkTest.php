@@ -9,8 +9,18 @@ class StrinkTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $testedClassName    = str_replace('Test', '', substr(strrchr(__CLASS__, "\\"), 1));
-        //$testedClassPath    = 'Zazalt\\'.$testedClassName .'\\'. $testedClassName;
+        $testedClassPath    = 'Zazalt\\'.$testedClassName .'\\'. $testedClassName;
         require_once getcwd() . '/src/'. $testedClassName .'.php';
+
+        // Load the rest of files
+        $iterator = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator(getcwd() . '/src/'),
+                \RecursiveIteratorIterator::SELF_FIRST);
+        foreach($iterator as $file) {
+            if($file->isFile()) {
+                require_once $file->getRealpath();
+            }
+        }
     }
 
     public function testCompressSpaces()
