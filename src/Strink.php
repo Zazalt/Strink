@@ -2,7 +2,9 @@
 
 namespace Zazalt\Strink;
 
-class Strink
+use Zazalt\Strink\Extension\Geek;
+
+class Strink extends Geek
 {
     protected $string;
 
