@@ -203,4 +203,16 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->slugify(true));
         }
     }
+
+    public function testClearSQLComments()
+    {
+        $stringsToTest = [
+            'SELECT * FROM TEST;' => 'SELECT * FROM TEST;',
+            'SELECT * FROM TEST; --comment here' => 'SELECT * FROM TEST;'
+        ];
+
+        foreach($stringsToTest as $key => $value) {
+            $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->clearSQLComments());
+        }
+    }
 }

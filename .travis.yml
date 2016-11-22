@@ -22,4 +22,3 @@ after_success:
 
 script:
   - phpunit tests/StrinkTest.php
-  - phpunit tests/GeekTest.php
