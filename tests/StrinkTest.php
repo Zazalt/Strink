@@ -215,4 +215,24 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->clearSQLComments());
         }
     }
+
+    public function testMinifyHTML()
+    {
+
+    }
+
+    public function testMinifyCSS()
+    {
+
+    }
+
+    public function testCompressCSS()
+    {
+
+    }
+
+    public function testSanitizeHTML()
+    {
+        
+    }
 }
