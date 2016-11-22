@@ -203,5 +203,4 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->slugify(true));
         }
     }
-
 }
