@@ -14,6 +14,7 @@ class GeekTest extends \Zazalt\Strink\Tests\ZazaltTest
     public function testClearSQLComments()
     {
         $stringsToTest = [
+            'SELECT * FROM TEST;' => 'SELECT * FROM TEST;',
             'SELECT * FROM TEST; --comment here' => 'SELECT * FROM TEST;'
         ];
 
