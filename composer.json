@@ -26,7 +26,7 @@
             "language": "php",
             "title": "Strink",
             "description": [
-                "Strink is a PHP library/package for string manipulation"
+                "Strink is a PHP library/package for string manipulation, minify, compress and sanitize"
             ],
             "github": "Zazalt",
             "repository": "Strink",
