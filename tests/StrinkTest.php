@@ -28,7 +28,12 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         $stringsToTest = [
             'lorem//ipsum/' => 'lorem/ipsum/',
             'lorem\\ipsum/' => 'lorem\\ipsum/',
-            'test//utf¿8//strings\/' => 'test/utf¿8/strings\/'
+            'test//utf¿8//strings\/' => 'test/utf¿8/strings\/',
+            'http://localhost//test' => 'http://localhost/test',
+            'http://///localhost//test' => 'http://localhost/test',
+            'https://localhost//test' => 'https://localhost/test',
+            'https://///localhost//test' => 'https://localhost/test',
+            '////%var%//mytest/test///testing' => '/%var%/mytest/test/testing'
         ];
 
         foreach($stringsToTest as $key => $value) {
