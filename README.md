@@ -9,7 +9,7 @@ Strink
 [![Latest Stable Version](https://poser.pugx.org/zazalt/strink/v/stable)](https://packagist.org/packages/zazalt/strink)
 ![Version](https://img.shields.io/badge/version-beta-yellow.svg)
 
-Strink is a PHP library/package for string manipulation
+Strink is a PHP library/package for string manipulation, minify, compress and sanitize
 
 Requirements
 ---------------
