@@ -12,7 +12,7 @@ class Strink extends Extension\Geek
     }
 
     /**
-     * @return object
+     * @return Strink
      */
     public static function turn($string = null)
     {
@@ -30,7 +30,7 @@ class Strink extends Extension\Geek
     /**
      * Return the string
      *
-     * @return string
+     * @return Strink
      */
     public function toString()
     {
@@ -43,7 +43,7 @@ class Strink extends Extension\Geek
      * @in  The string  you want to   fix
      * @out The string you want to fix
      *
-     * @return  object
+     * @return  Strink
      */
     public function compressSpaces()
     {
@@ -56,7 +56,7 @@ class Strink extends Extension\Geek
      * @in  this/is/a//very/bad/uri//
      * @out this/is/a/very/bad/uri/
      *
-     * @return  object
+     * @return Strink
      */
     public function compressSlashes()
     {
@@ -69,7 +69,7 @@ class Strink extends Extension\Geek
      * @in  ""Pleașe țest thîs string""
      * @out "Pleașe țest thîs string"
      *
-     * @return  object
+     * @return Strink
      */
 	public function compressDoubleQuotes() {
 		return new static(preg_replace('/"+/', '"', $this->string));
@@ -81,7 +81,7 @@ class Strink extends Extension\Geek
      * @in  '''Please 'test\" this string''
      * @out 'Please 'test\" this string'
      *
-     * @return  object
+     * @return Strink
      */
 	public function compressSimpleQuotes() {
 		return new static(preg_replace("/'+/", "'", $this->string));
@@ -90,7 +90,7 @@ class Strink extends Extension\Geek
     /**
      * Compress multiple simple and double quotes
      *
-     * @return  object
+     * @return Strink
      */
     public function compressQuotes()
     {
@@ -109,7 +109,7 @@ class Strink extends Extension\Geek
      *
      * @param   integer      $length
      * @param   multi-array  $keysToUse
-     * @return  object
+     * @return Strink
      */
     public function randomString($length = 12, array $keysToUse = [])
     {
@@ -146,7 +146,7 @@ class Strink extends Extension\Geek
      *
      * @param	integer	$limit
      * @param	string	$postText
-     * @return  object
+     * @return Strink
      */
     public function limitedString($limit = 10, $postText = '...', $cut = 'right')
     {
@@ -171,7 +171,7 @@ class Strink extends Extension\Geek
      * Translates a string with underscores into camel case (e.g. first_name -> firstName)
      *
      * @param   boolean $upperCaseFirsLetter
-     * @return  object
+     * @return Strink
      */
     public function snakeCaseToCamelCase($upperCaseFirsLetter = false)
     {
@@ -187,7 +187,7 @@ class Strink extends Extension\Geek
      * Transform a camelCase string to snake_case
      * Translates a camel case string into a string with underscores (e.g. firstName -> first_name)
      *
-     * @return  object
+     * @return Strink
      */
     public function camelCaseToSnakeCase()
     {
@@ -200,7 +200,7 @@ class Strink extends Extension\Geek
      * Replace/transliterate accented characters with non accented
      * Remove diacritics from a string
      *
-     * @return  object
+     * @return Strink
      */
     public function transliterateUtf8String()
     {
@@ -214,7 +214,7 @@ class Strink extends Extension\Geek
     /**
      * Convert a string to-a-slug-one
      *
-     * @return  object
+     * @return Strink
      * @docs    http://stackoverflow.com/questions/2955251/php-function-to-make-slug-url-string
      */
     public function slugify($keepUTF8Chars = false)
