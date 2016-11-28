@@ -60,7 +60,6 @@ class Strink extends Extension\Geek
      */
     public function compressSlashes()
     {
-        //return new static(preg_replace('/(^(?:f|ht)tps?://)|\\/+/', '/', $this->string));
         return new static(preg_replace('~(^|[^:])//+~', '\\1/', $this->string));
     }
 
