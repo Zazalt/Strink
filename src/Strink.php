@@ -175,6 +175,8 @@ class Strink extends Extension\Geek
      */
     public function snakeCaseToCamelCase($upperCaseFirsLetter = false)
     {
+        $this->string = strtolower($this->string);
+
         if(strpos($this->string, '_')) {
             $function = create_function('$c', 'return strtoupper($c[1]);');
             $this->string = preg_replace_callback('/_([a-z])/', $function, $this->string);

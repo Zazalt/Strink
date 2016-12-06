@@ -135,7 +135,8 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         $stringsToTest = [
             'sample' => 'sample',
             'snake_case' => 'snakeCase',
-            'sna-ke_case' => 'sna-keCase'
+            'sna-ke_case' => 'sna-keCase',
+            'SNAKE_CASE' => 'snakeCase'
         ];
 
         foreach($stringsToTest as $key => $value) {
