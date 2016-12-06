@@ -221,7 +221,17 @@ class Strink extends Extension\Geek
      */
     public function slugify($keepUTF8Chars = false)
     {
-        $this->string = $this->camelCaseToSnakeCase($this->string);
+        /* Not used yet:
+        preg_match_all('/[A-Z]/', $this->string, $match);
+        $caseUpper = count($match[0]);
+        */
+
+        preg_match_all('/[a-z]/', $this->string, $match);
+        $caseLower = count($match[0]);
+
+        if($caseLower > 0) {
+            $this->string = $this->camelCaseToSnakeCase($this->string);
+        }
 
         // replace non letter or digits by -
         $this->string = preg_replace('/[^\pL\d]+/u', '-', $this->string);

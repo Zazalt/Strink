@@ -27,6 +27,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
     {
         $stringsToTest = [
             'lorem//ipsum/' => 'lorem/ipsum/',
+            'lorem//IPSUM/' => 'lorem/IPSUM/',
             'lorem\\ipsum/' => 'lorem\\ipsum/',
             'test//utf¿8//strings\/' => 'test/utf¿8/strings\/',
             'http://localhost//test' => 'http://localhost/test',
@@ -180,6 +181,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
 
         $stringsToTest = [
             'sample' => 'sample',
+            'SAMPLE-STRING' => 'sample-string',
             'snakeCase 1' => 'snake-case-1',
             'SnakeCase 2' => 'snake-case-2',
             'Lorem_ipsum”dolor~sit!amet' => 'lorem-ipsum-dolor-sit-amet',
