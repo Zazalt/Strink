@@ -37,7 +37,8 @@ class Geek
             '/\),[\r\n\t ]+/s'  => '),',
             //remove quotes from HTML attributes that does not contain spaces; keep quotes around URLs!
             //'~([\r\n\t ])?([a-zA-Z0-9]+)="([a-zA-Z0-9_/\\-]+)"([\r\n\t ])?~s' => '$1$2=$3$4', //$1 and $4 insert first white-space character found before/after attribute
-            '/<!--(?!<!)[^\[>].*?-->/' => ''
+            '/<!--(?!<!)[^\[>].*?-->/s'=> '',   // remove inline HTML comments but keep html conditions
+            //'/<!--\n[.*?]-->/' => '',           // remove new-line HTML comments
         );
 
         return new static(preg_replace(array_keys($replace), array_values($replace), $this->string));

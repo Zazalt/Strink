@@ -231,8 +231,20 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
             '<div> <!-- /.col --> </div>' => '<div></div>',
             '<div><!-- /.col --></div>' => '<div></div>',
             '<!--[if lt IE 9]> <script></script> <![endif]-->' => '<!--[if lt IE 9]><script></script><![endif]-->',
+            '<!--[if lt IE 9]>
+                <script></script>
+            <![endif]-->' => '<!--[if lt IE 9]><script></script><![endif]-->',
             '<script></script>' => '<script></script>',
-            '<div class="login-box-body"> <!--<p class="login-box-msg">Sign in to start your session</p>-->' => '<div class="login-box-body">'
+            '<div class="login-box-body"> <!--<p class="login-box-msg">Sign in to start your session</p>-->' => '<div class="login-box-body">',
+            '<!--
+<div>
+new line HTML comment
+</div>
+-->' => '',
+            '<!--
+                <div>
+                    new line HTML comment
+                </div>-->' => ''
         ];
 
         foreach($stringsToTest as $key => $value) {
