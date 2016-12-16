@@ -13,15 +13,19 @@ class Geek
     public function minifyHTML()
     {
         $search = array(
+            '/<!--(.*?)-->/',
             '/\>[^\S ]+/s', // strip whitespaces after tags, except space
             '/[^\S ]+\</s', // strip whitespaces before tags, except space
+            '/\t/',
             '/(\s)+/s'     // shorten multiple whitespace sequences
         );
 
         $replace = array(
+            '',
             '>',
             '<',
-            '\\1'
+            '\\1',
+            ' ',
         );
 
         return new static(preg_replace($search, $replace, $this->string));

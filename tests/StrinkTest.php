@@ -226,7 +226,15 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
 
     public function testMinifyHTML()
     {
+        $stringsToTest = [
+            '<!-- test -->' => '',
+            '<div> <!-- /.col --> </div>' => '<div> </div>',
+            '<div><!-- /.col --></div>' => '<div></div>'
+        ];
 
+        foreach($stringsToTest as $key => $value) {
+            $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->minifyHTML());
+        }
     }
 
     public function testMinifyCSS()
