@@ -229,7 +229,9 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         $stringsToTest = [
             '<!-- test -->' => '',
             '<div> <!-- /.col --> </div>' => '<div> </div>',
-            '<div><!-- /.col --></div>' => '<div></div>'
+            '<div><!-- /.col --></div>' => '<div></div>',
+            '<!--[if lt IE 9]> <script></script> <![endif]-->' => '<!--[if lt IE 9]> <script></script> <![endif]-->',
+            '<script></script>' => '<script></script>'
         ];
 
         foreach($stringsToTest as $key => $value) {
