@@ -13,11 +13,11 @@ class Geek
     public function minifyHTML()
     {
         $search = array(
-            '/<!--[^>]*-->/s',
-            '/\>[^\S ]+/s', // strip whitespaces after tags, except space
-            '/[^\S ]+\</s', // strip whitespaces before tags, except space
-            '/\t/',
-            '/(\s)+/s'     // shorten multiple whitespace sequences
+            '/<!--[^>]*-->/s',  // html comments, but not <!--[if lt IE *]> ...
+            '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+            '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+            '/\t/',             // tabs
+            '/(\s)+/s'          // shorten multiple whitespace sequences
         );
 
         $replace = array(
