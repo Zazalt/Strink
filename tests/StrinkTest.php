@@ -227,11 +227,12 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
     public function testMinifyHTML()
     {
         $stringsToTest = [
-            '<!-- test -->' => '',
-            '<div> <!-- /.col --> </div>' => '<div> </div>',
+            '<a><!-- test --></a>' => '<a></a>',
+            '<div> <!-- /.col --> </div>' => '<div></div>',
             '<div><!-- /.col --></div>' => '<div></div>',
-            '<!--[if lt IE 9]> <script></script> <![endif]-->' => '<!--[if lt IE 9]> <script></script> <![endif]-->',
-            '<script></script>' => '<script></script>'
+            '<!--[if lt IE 9]> <script></script> <![endif]-->' => '<!--[if lt IE 9]><script></script><![endif]-->',
+            '<script></script>' => '<script></script>',
+            '<div class="login-box-body"> <!--<p class="login-box-msg">Sign in to start your session</p>-->' => '<div class="login-box-body">'
         ];
 
         foreach($stringsToTest as $key => $value) {
