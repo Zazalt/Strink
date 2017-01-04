@@ -264,6 +264,19 @@ new line HTML comment
 
     public function testSanitizeHTML()
     {
-        
+
+    }
+
+    public function testRemoveWords()
+    {
+        $stringsToTest = [
+            'the'   => ['Remove the word', 'Remove word'],
+            'to'    => ['The tournament', 'The tournament'],
+            'go'    => ['Go to Google', 'to Google']
+        ];
+
+        foreach($stringsToTest as $key => $value) {
+            $this->assertEquals($value[1], \Zazalt\Strink\Strink::turn($value[0])->removeWords([$key]));
+        }
     }
 }

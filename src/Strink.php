@@ -199,6 +199,21 @@ class Strink extends Extension\Geek
     }
 
     /**
+     * Remove a list of words from sentence
+     *
+     * @param   array   $wordsList
+     * @return  string
+     */
+    public function removeWords(array $wordsList)
+    {
+        foreach ($wordsList as $word) {
+            $this->string = preg_replace("/\b{$word}\b/i", '', $this->string);
+        }
+
+        return trim($this->compressSpaces($this->string));
+    }
+
+    /**
      * Replace/transliterate accented characters with non accented
      * Remove diacritics from a string
      *
