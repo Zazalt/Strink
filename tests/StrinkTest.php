@@ -254,17 +254,14 @@ new line HTML comment
 
     public function testMinifyCSS()
     {
-
     }
 
     public function testCompressCSS()
     {
-
     }
 
     public function testSanitizeHTML()
     {
-
     }
 
     public function testRemoveWords()
