@@ -6,7 +6,7 @@ class Strink extends Extension\Geek
 {
     protected $string;
 
-    public function __construct($string)
+    public function __construct(string $string)
     {
         $this->string = $string;
     }
@@ -14,7 +14,7 @@ class Strink extends Extension\Geek
     /**
      * @return Strink
      */
-    public static function turn($string = null)
+    public static function turn(string $string = null)
     {
         return new static($string);
     }
@@ -111,7 +111,7 @@ class Strink extends Extension\Geek
      * @param   multi-array  $keysToUse
      * @return Strink
      */
-    public function randomString($length = 12, array $keysToUse = [])
+    public function randomString(int $length = 12, array $keysToUse = [])
     {
         if(is_array($keysToUse) AND count($keysToUse) == 0) {
             $keysToUse = [
@@ -148,7 +148,7 @@ class Strink extends Extension\Geek
      * @param	string	$postText
      * @return Strink
      */
-    public function limitedString($limit = 10, $postText = '...', $cut = 'right')
+    public function limitedString(int $limit = 10, string $postText = '...', string $cut = 'right')
     {
         if(strlen($this->string) > $limit) {
 
@@ -173,7 +173,7 @@ class Strink extends Extension\Geek
      * @param   boolean $upperCaseFirsLetter
      * @return Strink
      */
-    public function snakeCaseToCamelCase($upperCaseFirsLetter = false)
+    public function snakeCaseToCamelCase(bool $upperCaseFirsLetter = false)
     {
         $this->string = strtolower($this->string);
 
@@ -301,7 +301,7 @@ class Strink extends Extension\Geek
      * @return Strink
      * @docs    http://stackoverflow.com/questions/2955251/php-function-to-make-slug-url-string
      */
-    public function slugify($keepUTF8Chars = false)
+    public function slugify(bool $keepUTF8Chars = false)
     {
         /* Not used yet:
         preg_match_all('/[A-Z]/', $this->string, $match);
