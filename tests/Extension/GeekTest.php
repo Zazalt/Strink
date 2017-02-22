@@ -1,8 +1,8 @@
 <?php
 
-namespace Zazalt\Strink\Tests;
+namespace Zazalt\Strink\Tests\Extension;
 
-class ExtensionGeekTest extends \Zazalt\Strink\Tests\ZazaltTest
+class GeekTest extends \Zazalt\Strink\Tests\ZazaltTest
 {
     protected $that;
 
