@@ -152,12 +152,15 @@ class Strink extends Extension\Geek
      */
     public function limitedString(int $limit = 10, string $postText = '...', string $cut = 'right'): Strink
     {
+        $return = $this->string;
+
         if(strlen($this->string) > $limit) {
 
             $limit = $limit+1;
 
             if($cut == 'right') {
-                return mb_substr($this->string, 0, ($limit - count($postText)), 'utf-8') . $postText;
+                $return = mb_substr($this->string, 0, ($limit - count($postText)), 'utf-8') . $postText;
+
             } elseif($cut == 'middle' OR $cut == 'center') {
                 $return = mb_substr($this->string, 0, (round($limit / 2) - count($postText)), 'utf-8');
                 $return .= $postText;
@@ -165,7 +168,7 @@ class Strink extends Extension\Geek
             }
         }
 
-        return new static(isset($return) ? $return : $this->string);
+        return new static($return);
     }
 
     /**
@@ -204,7 +207,7 @@ class Strink extends Extension\Geek
      * Remove a list of words from sentence
      *
      * @param   array   $wordsList
-     * @return  string
+     * @return  Strink
      */
     public function removeWords(array $wordsList): Strink
     {
@@ -212,7 +215,7 @@ class Strink extends Extension\Geek
             $this->string = preg_replace("/\b{$word}\b/i", '', $this->string);
         }
 
-        return trim($this->compressSpaces($this->string));
+        return new static(trim($this->compressSpaces($this->string)));
     }
 
     /**
