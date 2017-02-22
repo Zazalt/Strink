@@ -13,7 +13,7 @@ Strink is a PHP library/package for string manipulation, minify, compress and sa
 
 Requirements
 ---------------
-* php >= 5.4.0
+* php >= 7.1.0
 
 Packagist Dependencies
 ---------------
