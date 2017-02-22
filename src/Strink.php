@@ -6,7 +6,7 @@ class Strink extends Extension\Geek
 {
     protected $string;
 
-    public function __construct(string $string)
+    public function __construct(string $string = null)
     {
         $this->string = $string;
     }
