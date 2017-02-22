@@ -45,7 +45,7 @@ class Strink extends Extension\Geek
      *
      * @return  Strink
      */
-    public function compressSpaces()
+    public function compressSpaces(): Strink
     {
         return new static(preg_replace('/\s\s+/', ' ', $this->string));
     }
@@ -58,7 +58,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function compressSlashes()
+    public function compressSlashes(): Strink
     {
         return new static(preg_replace('~(^|[^:])//+~', '\\1/', $this->string));
     }
@@ -113,7 +113,7 @@ class Strink extends Extension\Geek
      * @param   multi-array  $keysToUse
      * @return Strink
      */
-    public function randomString(int $length = 12, array $keysToUse = [])
+    public function randomString(int $length = 12, array $keysToUse = []): Strink
     {
         if(is_array($keysToUse) AND count($keysToUse) == 0) {
             $keysToUse = [
@@ -150,7 +150,7 @@ class Strink extends Extension\Geek
      * @param	string	$postText
      * @return Strink
      */
-    public function limitedString(int $limit = 10, string $postText = '...', string $cut = 'right')
+    public function limitedString(int $limit = 10, string $postText = '...', string $cut = 'right'): Strink
     {
         if(strlen($this->string) > $limit) {
 
@@ -175,7 +175,7 @@ class Strink extends Extension\Geek
      * @param   boolean $upperCaseFirsLetter
      * @return Strink
      */
-    public function snakeCaseToCamelCase(bool $upperCaseFirsLetter = false)
+    public function snakeCaseToCamelCase(bool $upperCaseFirsLetter = false): Strink
     {
         $this->string = strtolower($this->string);
 
@@ -193,7 +193,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function camelCaseToSnakeCase()
+    public function camelCaseToSnakeCase(): Strink
     {
         $this->string[0] = strtolower($this->string[0]);
         $function = create_function('$c', 'return "_" . strtolower($c[1]);');
@@ -206,7 +206,7 @@ class Strink extends Extension\Geek
      * @param   array   $wordsList
      * @return  string
      */
-    public function removeWords(array $wordsList)
+    public function removeWords(array $wordsList): Strink
     {
         foreach ($wordsList as $word) {
             $this->string = preg_replace("/\b{$word}\b/i", '', $this->string);
@@ -221,7 +221,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function transliterateUtf8String()
+    public function transliterateUtf8String(): Strink
     {
         $sets = [
             'a'     => ['á', 'à', 'â', 'ä', 'ã', 'å', 'ā', 'ă', 'ą', 'ǻ', 'ǎ'],
@@ -303,7 +303,7 @@ class Strink extends Extension\Geek
      * @return Strink
      * @docs    http://stackoverflow.com/questions/2955251/php-function-to-make-slug-url-string
      */
-    public function slugify(bool $keepUTF8Chars = false)
+    public function slugify(bool $keepUTF8Chars = false): Strink
     {
         /* Not used yet:
         preg_match_all('/[A-Z]/', $this->string, $match);
