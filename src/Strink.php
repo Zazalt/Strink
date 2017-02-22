@@ -14,7 +14,7 @@ class Strink extends Extension\Geek
     /**
      * @return Strink
      */
-    public static function turn(string $string = null)
+    public static function turn(string $string = null): Strink
     {
         return new static($string);
     }
@@ -71,9 +71,10 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-	public function compressDoubleQuotes() {
-		return new static(preg_replace('/"+/', '"', $this->string));
-	}
+    public function compressDoubleQuotes(): Strink
+    {
+        return new static(preg_replace('/"+/', '"', $this->string));
+    }
 
     /**
      * Compress multiple simple quotes to a single one
@@ -83,16 +84,17 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-	public function compressSimpleQuotes() {
-		return new static(preg_replace("/'+/", "'", $this->string));
-	}
+    public function compressSimpleQuotes(): Strink
+    {
+        return new static(preg_replace("/'+/", "'", $this->string));
+    }
 
     /**
      * Compress multiple simple and double quotes
      *
      * @return Strink
      */
-    public function compressQuotes()
+    public function compressQuotes(): Strink
     {
         $modifiedString = $this
             ->compressSimpleQuotes()
