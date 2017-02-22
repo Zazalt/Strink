@@ -2,13 +2,15 @@
 
 namespace Zazalt\Strink\Tests;
 
+use Zazalt\Strink\Strink;
+
 class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
 {
     protected $that;
 
     public function __construct()
     {
-        parent::loader($this, '');
+        parent::loader(Strink::class, '');
     }
 
     public function testCompressSpaces()
