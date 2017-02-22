@@ -8,7 +8,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
 
     public function __construct()
     {
-        parent::loader($this, []);
+        parent::loader($this, '');
     }
 
     public function testCompressSpaces()
