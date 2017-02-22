@@ -38,7 +38,8 @@ class ZazaltTest extends \PHPUnit_Framework_TestCase
                     }
                 }
                 if($include) {
-                    require_once $file;
+                    //require_once $file->getRealpath();
+                    require_once $file->getPathname();
                 }
             }
         }
