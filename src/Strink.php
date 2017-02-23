@@ -6,7 +6,7 @@ class Strink extends Extension\Geek
 {
     protected $string;
 
-    public function __construct($string)
+    public function __construct(string $string = null)
     {
         $this->string = $string;
     }
@@ -14,7 +14,7 @@ class Strink extends Extension\Geek
     /**
      * @return Strink
      */
-    public static function turn($string = null)
+    public static function turn(string $string = null): Strink
     {
         return new static($string);
     }
@@ -45,7 +45,7 @@ class Strink extends Extension\Geek
      *
      * @return  Strink
      */
-    public function compressSpaces()
+    public function compressSpaces(): Strink
     {
         return new static(preg_replace('/\s\s+/', ' ', $this->string));
     }
@@ -58,7 +58,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function compressSlashes()
+    public function compressSlashes(): Strink
     {
         return new static(preg_replace('~(^|[^:])//+~', '\\1/', $this->string));
     }
@@ -71,9 +71,10 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-	public function compressDoubleQuotes() {
-		return new static(preg_replace('/"+/', '"', $this->string));
-	}
+    public function compressDoubleQuotes(): Strink
+    {
+        return new static(preg_replace('/"+/', '"', $this->string));
+    }
 
     /**
      * Compress multiple simple quotes to a single one
@@ -83,16 +84,17 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-	public function compressSimpleQuotes() {
-		return new static(preg_replace("/'+/", "'", $this->string));
-	}
+    public function compressSimpleQuotes(): Strink
+    {
+        return new static(preg_replace("/'+/", "'", $this->string));
+    }
 
     /**
      * Compress multiple simple and double quotes
      *
      * @return Strink
      */
-    public function compressQuotes()
+    public function compressQuotes(): Strink
     {
         $modifiedString = $this
             ->compressSimpleQuotes()
@@ -111,7 +113,7 @@ class Strink extends Extension\Geek
      * @param   multi-array  $keysToUse
      * @return Strink
      */
-    public function randomString($length = 12, array $keysToUse = [])
+    public function randomString(int $length = 12, array $keysToUse = []): Strink
     {
         if(is_array($keysToUse) AND count($keysToUse) == 0) {
             $keysToUse = [
@@ -148,14 +150,17 @@ class Strink extends Extension\Geek
      * @param	string	$postText
      * @return Strink
      */
-    public function limitedString($limit = 10, $postText = '...', $cut = 'right')
+    public function limitedString(int $limit = 10, string $postText = '...', string $cut = 'right'): Strink
     {
+        $return = $this->string;
+
         if(strlen($this->string) > $limit) {
 
             $limit = $limit+1;
 
             if($cut == 'right') {
-                return mb_substr($this->string, 0, ($limit - count($postText)), 'utf-8') . $postText;
+                $return = mb_substr($this->string, 0, ($limit - count($postText)), 'utf-8') . $postText;
+
             } elseif($cut == 'middle' OR $cut == 'center') {
                 $return = mb_substr($this->string, 0, (round($limit / 2) - count($postText)), 'utf-8');
                 $return .= $postText;
@@ -163,7 +168,7 @@ class Strink extends Extension\Geek
             }
         }
 
-        return new static(isset($return) ? $return : $this->string);
+        return new static($return);
     }
 
     /**
@@ -173,7 +178,7 @@ class Strink extends Extension\Geek
      * @param   boolean $upperCaseFirsLetter
      * @return Strink
      */
-    public function snakeCaseToCamelCase($upperCaseFirsLetter = false)
+    public function snakeCaseToCamelCase(bool $upperCaseFirsLetter = false): Strink
     {
         $this->string = strtolower($this->string);
 
@@ -191,7 +196,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function camelCaseToSnakeCase()
+    public function camelCaseToSnakeCase(): Strink
     {
         $this->string[0] = strtolower($this->string[0]);
         $function = create_function('$c', 'return "_" . strtolower($c[1]);');
@@ -202,15 +207,15 @@ class Strink extends Extension\Geek
      * Remove a list of words from sentence
      *
      * @param   array   $wordsList
-     * @return  string
+     * @return  Strink
      */
-    public function removeWords(array $wordsList)
+    public function removeWords(array $wordsList): Strink
     {
         foreach ($wordsList as $word) {
             $this->string = preg_replace("/\b{$word}\b/i", '', $this->string);
         }
 
-        return trim($this->compressSpaces($this->string));
+        return new static(trim($this->compressSpaces($this->string)));
     }
 
     /**
@@ -219,7 +224,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function transliterateUtf8String()
+    public function transliterateUtf8String(): Strink
     {
         $sets = [
             'a'     => ['á', 'à', 'â', 'ä', 'ã', 'å', 'ā', 'ă', 'ą', 'ǻ', 'ǎ'],
@@ -301,7 +306,7 @@ class Strink extends Extension\Geek
      * @return Strink
      * @docs    http://stackoverflow.com/questions/2955251/php-function-to-make-slug-url-string
      */
-    public function slugify($keepUTF8Chars = false)
+    public function slugify(bool $keepUTF8Chars = false): Strink
     {
         /* Not used yet:
         preg_match_all('/[A-Z]/', $this->string, $match);
