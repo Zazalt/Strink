@@ -13,7 +13,7 @@ class GeekTest extends \Zazalt\Strink\Tests\ZazaltTest
         parent::loader(Strink::class, '');
     }
 
-    public function testClearSQLComments()
+    public function testClearSQLComments(): void
     {
         $stringsToTest = [
             'SELECT * FROM TEST;' => 'SELECT * FROM TEST;',

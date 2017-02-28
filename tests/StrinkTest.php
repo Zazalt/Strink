@@ -13,7 +13,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         parent::loader(Strink::class, '');
     }
 
-    public function testCompressSpaces()
+    public function testCompressSpaces(): void
     {
         $stringsToTest = [
             ' test  test test "  test   "' => ' test test test " test "',
@@ -25,7 +25,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testCompressSlashes()
+    public function testCompressSlashes(): void
     {
         $stringsToTest = [
             'lorem//ipsum/' => 'lorem/ipsum/',
@@ -44,7 +44,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testCompressDoubleQuotesProvider()
+    public function testCompressDoubleQuotesProvider(): void
     {
         return [
             '""Please test this string""' => '"Please test this string"',

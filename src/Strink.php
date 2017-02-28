@@ -22,7 +22,7 @@ class Strink extends Extension\Geek
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->string;
     }
@@ -32,7 +32,7 @@ class Strink extends Extension\Geek
      *
      * @return Strink
      */
-    public function toString()
+    public function toString(): string
     {
         return $this->string;
     }
