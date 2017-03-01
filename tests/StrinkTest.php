@@ -58,14 +58,14 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         ];
     }
 
-    public function testCompressDoubleQuotes()
+    public function testCompressDoubleQuotes(): void
     {
         foreach($this->testCompressDoubleQuotesProvider() as $key => $value) {
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->compressDoubleQuotes());
         }
     }
 
-    public function testCompressSimpleQuotesProvider()
+    public function testCompressSimpleQuotesProvider(): array
     {
         return [
             "''Please test this string''" => "'Please test this string'",
@@ -79,14 +79,14 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         ];
     }
 
-    public function testCompressSimpleQuotes()
+    public function testCompressSimpleQuotes(): void
     {
         foreach($this->testCompressSimpleQuotesProvider() as $key => $value) {
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->compressSimpleQuotes());
         }
     }
 
-    public function testCompressQuotes()
+    public function testCompressQuotes(): void
     {
         foreach($this->testCompressDoubleQuotesProvider() as $key => $value) {
             $this->assertEquals($value, \Zazalt\Strink\Strink::turn($key)->compressQuotes());
@@ -101,12 +101,12 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testRandomString()
+    public function testRandomString(): void
     {
         $this->assertEquals(10, strlen(\Zazalt\Strink\Strink::turn()->randomString(10)));
     }
 
-    public function testLimitedString()
+    public function testLimitedString(): void
     {
         // Test the right cut
         $stringsToTest = [
@@ -133,7 +133,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testSnakeCaseToCamelCase()
+    public function testSnakeCaseToCamelCase(): void
     {
         $stringsToTest = [
             'sample' => 'sample',
@@ -147,7 +147,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testCamelCaseToSnakeCase()
+    public function testCamelCaseToSnakeCase(): void
     {
         $stringsToTest = [
             'sample' => 'sample',
@@ -177,7 +177,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testSlugify()
+    public function testSlugify(): void
     {
         // ASCII test
 
@@ -214,7 +214,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testRemoveWords()
+    public function testRemoveWords(): void
     {
         $stringsToTest = [
             'the'   => ['Remove the word', 'Remove word'],
