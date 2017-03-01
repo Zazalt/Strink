@@ -44,7 +44,7 @@ class StrinkTest extends \Zazalt\Strink\Tests\ZazaltTest
         }
     }
 
-    public function testCompressDoubleQuotesProvider(): void
+    public function testCompressDoubleQuotesProvider(): array
     {
         return [
             '""Please test this string""' => '"Please test this string"',
